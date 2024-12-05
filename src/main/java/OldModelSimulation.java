@@ -26,7 +26,8 @@ public class OldModelSimulation {
             boolean stabilized = false;
             int stabilizeStep = 0;
             int stabilizeCount = 0;
-            int requiredStableSteps = 100; // Number of consecutive stable steps required
+            int requiredStableSteps = 100;
+            int finalStep = 0;// Number of consecutive stable steps required
 
             for (int step = 1; step <= totalSteps; step++) {
                 // Compute derivatives
@@ -61,13 +62,15 @@ public class OldModelSimulation {
 
                 // Optional: Prevent population or rent from becoming negative
                 if (P < 0 || R < 0) {
+                    finalStep = step;
                     break;
                 }
             }
 
             // Final Assessment
             if (P < 0 || R < 0) {
-                System.out.println("\nThe system has become unstable (negative population or rent).");
+                System.out.println("\nThe system has become unstable (negative population or rent) after "
+                        + finalStep * deltaT * 10 + " years.");
                 System.out.printf("Final Population P = %.5f\n", P);
                 System.out.printf("Final Rent R = %.5f\n", R);
             } else if (stabilized) {
