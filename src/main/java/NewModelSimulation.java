@@ -26,7 +26,7 @@ public class NewModelSimulation {
             boolean stabilized = false;
             int stabilizeStep = 0;
             int stabilizeCount = 0;
-            int requiredStableSteps = 100; // Number of consecutive stable steps required
+            int requiredStableSteps = 10000; // Number of consecutive stable steps required
 
             for (int step = 1; step <= totalSteps; step++) {
                 // Compute derivatives
