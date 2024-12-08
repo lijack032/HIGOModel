@@ -31,7 +31,7 @@ public class NewModelSimulation {
             for (int step = 1; step <= totalSteps; step++) {
                 // Compute derivatives
                 double dPdt = P * (10 - P) - R;
-                double dRdt = (P / 3) * (R / 10) + (Math.pow(1.02,10) - 1) * R - 0.25 * Math.pow(R - 3, 2) * heaviside(R - 3);
+                double dRdt = 0.5 * R + (P / 3) * (R / 10) - 0.3 * Math.pow(R - 3, 2) * heaviside(R - 3);
 
                 // Update P and R using Euler's Method
                 double P_new = P + dPdt * deltaT;
